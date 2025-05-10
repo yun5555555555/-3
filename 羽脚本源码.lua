@@ -254,46 +254,6 @@ local UITab3 = win:Tab("通用",'16060333448')
 
 local about = UITab3:section("通用",true)
 
-local Players = about:Dropdown("选择玩家", 'Dropdown', dropdown, function(v)
-    playernamedied = v
-end)
-
-game.Players.ChildAdded:Connect(function(player)
-    dropdown[player.UserId] = player.Name
-    Players:AddOption(player.Name)
-end)
-
-game.Players.ChildRemoved:Connect(function(player)
-    Players:RemoveOption(player.Name)
-    for k, v in pairs(dropdown) do
-        if v == player.Name then
-            dropdown[k] = nil
-        end
-    end
-end)
-
-about:Button("传送到玩家旁边", function()
-    local HumRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local tp_player = game.Players:FindFirstChild(playernamedied)
-    if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
-        HumRoot.CFrame = tp_player.Character.HumanoidRootPart.CFrame + Vector3.new(0, 3, 0)
-        Notify("大司马", "已经传送到玩家身边", "rbxassetid://", 5)
-    else
-        Notify("大司马", "无法传送 玩家已消失", "rbxassetid://", 5)
-    end
-end)
-
-about:Button("把玩家传送过来", function()
-    local HumRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
-    local tp_player = game.Players:FindFirstChild(playernamedied)
-    if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
-        tp_player.Character.HumanoidRootPart.CFrame = HumRoot.CFrame + Vector3.new(0, 3, 0)
-        Notify("大司马", "已传送过来", "rbxassetid://", 5)
-    else
-        Notify("大司马", "无法传送 玩家已消失", "rbxassetid://", 5)
-    end
-end)
-
 about:Toggle("查看玩家", 'Toggleflag', false, function(state)
     if state then
         game:GetService('Workspace').CurrentCamera.CameraSubject =
@@ -830,51 +790,51 @@ loadstring(game:HttpGet(('https://pastebin.com/raw/JipYNCht'),true))()
 end)
 
 about:Button("FE大长腿", function()
-    loadstring(game:HttpGet('https://gist.githubusercontent.com/1BlueCat/7291747e9f093555573e027621f08d6e/raw/23b48f2463942befe19d81aa8a06e3222996242c/FE%2520Da%2520Feets'))()
+loadstring(game:HttpGet('https://gist.githubusercontent.com/1BlueCat/7291747e9f093555573e027621f08d6e/raw/23b48f2463942befe19d81aa8a06e3222996242c/FE%2520Da%2520Feets'))()
 end)
 
 about:Button("FE用头", function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/BK4Q0DfU"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/BK4Q0DfU"))()
 end)
 
 about:Button("复仇者", function()
-    loadstring(game:HttpGet(('https://pastefy.ga/iGyVaTvs/raw'),true))()
+loadstring(game:HttpGet(('https://pastefy.ga/iGyVaTvs/raw'),true))()
 end)
 
 about:Button("鼠标", function()
-    loadstring(game:HttpGet(('https://pastefy.ga/V75mqzaz/raw'),true))()
+loadstring(game:HttpGet(('https://pastefy.ga/V75mqzaz/raw'),true))()
 end)
 
 about:Button("变怪物", function()
-    loadstring(game:HttpGetAsync("https://pastebin.com/raw/jfryBKds"))()
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/jfryBKds"))()
 end)
 
 about:Button("香蕉枪", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/BananaGunByNerd.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/BananaGunByNerd.lua"))()
 end)
 
 about:Button("超长🐔巴", function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/ESWSFND7", true))()
+loadstring(game:HttpGet("https://pastebin.com/raw/ESWSFND7", true))()
 end)
 
 about:Button("操人", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoYunCN/UWU/main/AHAJAJAKAK/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A.LUA", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoYunCN/UWU/main/AHAJAJAKAK/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A.LUA", true))()
 end)
 
 about:Button("FE动画中心", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/GamingScripter/Animation-Hub/main/Animation%20Gui", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GamingScripter/Animation-Hub/main/Animation%20Gui", true))()
 end)
 
 about:Button("FE变玩家", function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/XR4sGcgJ"))()
+oadstring(game:HttpGet("https://pastebin.com/raw/XR4sGcgJ"))()
 end)
 
 about:Button("FE猫娘R63", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tescalus/Pendulum-Hubs-Source/main/Pendulum%20Hub%20V5.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Tescalus/Pendulum-Hubs-Source/main/Pendulum%20Hub%20V5.lua"))()
 end)
 
 about:Button("FE", function()
-    loadstring(game:HttpGet('https://pastefy.ga/a7RTi4un/raw'))()
+loadstring(game:HttpGet('https://pastefy.ga/a7RTi4un/raw'))()
 end)
 
 local UITab3 = win:Tab("脚本合集",'16060333448')
@@ -938,42 +898,42 @@ local UITab1 = win:Tab("音乐",'7734068321')
 
 local about = UITab1:section("音乐",true)
 
-about:Button("防空警报", function()
-    local sound = Instance.new("Sound")
+   about:Button("防空警报", function()
+        local sound = Instance.new("Sound")
     sound.SoundId = "rbxassetid://792323017"
     sound.Parent = game.Workspace
     sound:Play()
     end)
     
-about:Button("义勇军进行曲", function()
-    local sound = Instance.new("Sound")
+   about:Button("义勇军进行曲", function()
+        local sound = Instance.new("Sound")
     sound.SoundId = "rbxassetid://1845918434"
     sound.Parent = game.Workspace
     sound:Play()
     end)
-
-about:Button("彩虹瀑布",function()
-    local sound = Instance.new("Sound")
+    
+   about:Button("彩虹瀑布",function()
+        local sound = Instance.new("Sound")
     sound.SoundId = "rbxassetid://1837879082"
     sound.Parent = game.Workspace
     sound:Play()
     end)
     
-about:Button("火车音", function()
-    local sound = Instance.new("Sound")
+   about:Button("火车音", function()
+        local sound = Instance.new("Sound")
     sound.SoundId = "rbxassetid://3900067524"
     sound.Parent = game.Workspace
     sound:Play()
     end)
     
-about:Button("Gentry Road",function()
-    local sound = Instance.new("Sound")
+   about:Button("Gentry Road",function()
+        local sound = Instance.new("Sound")
     sound.SoundId = "rbxassetid://5567523008"
     sound.Parent = game.Workspace
     sound:Play()
     end)
     
-about:Button("植物大战僵尸",function() 
+   about:Button("植物大战僵尸",function() 
          local sound = Instance.new("Sound") 
      sound.SoundId = "rbxassetid://158260415" 
      sound.Parent = game.Workspace 
@@ -1057,7 +1017,7 @@ about:Button("植物大战僵尸",function()
      sound:Play()
      end) 
      
- about:Button("国外音乐脚本",function()          
+about:Button("国外音乐脚本",function()          
  loadstring(game:HttpGet(('https://pastebin.com/raw/g97RafnE'),true))()                   
 end) 
 
