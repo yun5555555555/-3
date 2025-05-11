@@ -43,7 +43,7 @@ wait(2)
 local CoreGui = game:GetService("StarterGui")
 CoreGui:SetCore("SendNotification", {
     Title = "启动成功",
-    Text = "您好"..game.Players.LocalPlayer.Name.."，欢迎使用少羽缝合脚本",
+    Text = "您好，"..game.Players.LocalPlayer.Name.."，欢迎使用少羽缝合脚本"
     Duration = 5,
 })
 
@@ -86,8 +86,8 @@ end
 
 createAdaptiveWatermark()
 
-local LBLG = Instance.new("ScreenGui", getParent)
-local LBL = Instance.new("TextLabel", getParent)
+local LBLG = Instance.new("ScreenGui", game.CoreGui)
+local LBL = Instance.new("TextLabel", LBLG)
 local player = game.Players.LocalPlayer
 
 LBLG.Name = "LBLG"
@@ -114,7 +114,8 @@ local Heartbeat = game:GetService("RunService").Heartbeat
 local LastIteration, Start
 local FrameUpdateTable = { }
 
-game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "羽脚本"; Text ="载入中"; Duration = 2; })wait("3")
+game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "羽脚本", Text ="载入中", Duration = 2 })
+wait(3)
 
 game:GetService("StarterGui"):SetCore("SendNotification",{ Title = "羽脚本"; Text ="纯缝合不是特别好"; Duration = 2; })wait("2")
 
@@ -412,21 +413,38 @@ coroutine.wrap(EKBNYI_fake_script)()
 end)
 
 about:Toggle("自动互动", "Auto Interact", false, function(state)
-        if state then
-            autoInteract = true
+    if state then
+        autoInteract = true
+
+        local interactThread = task.spawn(function()
             while autoInteract do
-                for _, descendant in pairs(workspace:GetDescendants()) do
-                    if descendant:IsA("ProximityPrompt") then
-                        fireproximityprompt(descendant)
-                    end
+                if debounce then
+                    task.wait(0.5)
+                    debounce = false
+                    continue
                 end
-                task.wait(0.25) -- Adjust the wait time as needed
+                
+                pcall(function()
+                    for _, descendant in pairs(workspace:GetDescendants()) do
+                        if not autoInteract then break end
+                        if descendant:IsA("ProximityPrompt") then
+                            fireproximityprompt(descendant)
+                            debounce = true
+                            task.wait(0.1)
+                        end
+                    end
+                end)
+                
+                task.wait(0.25)
             end
-        else
-            autoInteract = false
-        end
-    end)
-    
+        end)
+        
+        coroutine.close(interactThread)
+    else
+        autoInteract = false
+    end
+end)
+
 about:Button("隐身（E）",function()
 loadstring(game:HttpGet('https://pastebin.com/raw/nwGEvkez'))()
 end)
@@ -764,7 +782,7 @@ about:Button("透视3",function()
     end)
     end)
 
-about:Toggle("ESP 显示名字", "AMG", ENABLED, function(enabled)
+about:Toggle("ESP 显示名字", "AMG", false, function(enabled)
     if enabled then ENABLED = true for _, player in ipairs(Players:GetPlayers()) do onPlayerAdded(player) end Players.PlayerAdded:Connect(onPlayerAdded) Players.PlayerRemoving:Connect(onPlayerRemoving) local localPlayer = Players.LocalPlayer if localPlayer and localPlayer.Character then for _, player in ipairs(Players:GetPlayers()) do if player.Character then createNameLabel(player) end end end RunService.Heartbeat:Connect(function() if ENABLED then for _, player in ipairs(Players:GetPlayers()) do if player.Character then createNameLabel(player) end end end end) else ENABLED = false for _, player in ipairs(Players:GetPlayers()) do onPlayerRemoving(player) end RunService:UnbindFromRenderStep("move") end
 end)
 
