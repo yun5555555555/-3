@@ -135,7 +135,7 @@ end
 Start = tick()
 Heartbeat:Connect(HeartbeatUpdate)
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/renlua/UI-lib/refs/heads/main/AL_V3"))()	
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/renlua/UI-lib/refs/heads/main/AL_V3"))()	
 local win = ui:new("羽脚本")
 --
 local UITab1 = win:Tab("信息",'16060333448')
